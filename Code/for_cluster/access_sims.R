@@ -7,8 +7,10 @@ source('Code/summarize_sim_results.R')
 
 source('Code/toy_model.R')
 
-args <- commandArgs(TRUE)
-nsims <- args[1]
+# args <- commandArgs(TRUE)
+# nsims <- args[1]
+
+nsims <- 1
 
 sim_pars$recruit_corr <- 0
 sim_pars$ind_pops <- 0

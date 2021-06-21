@@ -7,8 +7,10 @@ source('Code/summarize_sim_results.R')
 
 source('Code/toy_model.R')
 
-args <- commandArgs(TRUE)
-nsims <- args[1]
+# args <- commandArgs(TRUE)
+# nsims <- args[1]
+
+nsims <- 1
 
 fleet_distn <- list()
 fleet_distn$"easy access" <- c(25,25,25,109,109,109)
