@@ -6,8 +6,10 @@ source('Code/half_baked_plot_function.R')
 source('Code/summarize_sim_results.R')
 source('Code/toy_model.R')
 
-args <- commandArgs(TRUE)
-nsims <- args[1]
+# args <- commandArgs(TRUE)
+# nsims <- args[1]
+
+nsims <- 1
 
 res.list <- list()
 corr.par <- c(0.5, 0, -0.5)
