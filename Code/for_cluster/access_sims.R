@@ -1,14 +1,16 @@
 library(reshape2)
 library(tidyverse)
-library(getBestSpp)
+# library(getBestSpp)
+Rcpp::sourceCpp("Code/getBestSpp.cpp")  # Link to getBestSpp locally
 source('Code/functions.R')
 source('Code/half_baked_plot_function.R')
 source('Code/summarize_sim_results.R')
 
 source('Code/toy_model.R')
 
-args <- commandArgs(TRUE)
-nsims <- args[1]
+# args <- commandArgs(TRUE)
+# nsims <- args[1]
+nsims <- 1  # set number of simulations here
 
 sim_pars$recruit_corr <- 0
 sim_pars$ind_pops <- 0
