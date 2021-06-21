@@ -1,6 +1,7 @@
 library(reshape2)
 library(tidyverse)
-library(getBestSpp)
+# library(getBestSpp)
+Rcpp::sourceCpp("Code/getBestSpp.cpp")  # Link to getBestSpp locally
 source('Code/functions.R')
 source('Code/half_baked_plot_function.R')
 source('Code/summarize_sim_results.R')
@@ -8,12 +9,11 @@ source('Code/toy_model.R')
 
 # args <- commandArgs(TRUE)
 # nsims <- args[1]
-
-nsims <- 1
+nsims <- 1  # set number of simulations here
 
 res.list <- list()
 corr.par <- c(0.5, 0, -0.5)
-sim_pars$ind_pops <- 0#which(spp.names == 'groundfish')
+sim_pars$ind_pops <- which(spp.names == 'groundfish')
 sim_pars$ships_per_fleet <- rep(67,6)
 names(sim_pars$ships_per_fleet) <- fleets
 sim_pars$nships <- 67
@@ -25,6 +25,8 @@ for(ii in 1:3) {
                                                       long_output = FALSE), simplify = FALSE)
   print(paste('scenario', ii))
 }
+
+
 print('sims done')
 synchrony <- res.list
 sync_tibbles <- summarize_sim_results(synchrony, 'synchrony')
