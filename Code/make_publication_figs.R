@@ -1,6 +1,7 @@
 library(tidyverse)
 library(stringr)
-library(getBestSpp)
+# library(getBestSpp)
+Rcpp::sourceCpp("Code/getBestSpp.cpp")  # Link to getBestSpp locally
 library(reshape2)
 library(grid)
 library(gridExtra)
@@ -8,15 +9,19 @@ library(gridExtra)
 source('Code/functions.R')
 source('Code/toy_model.R')
 
-load('Data/10k_5_20/access_df_10-8_1k.RData')
-load('Data/10k_5_20/sync_df_10-8_1k.RData')
-load('Data/10k_5_20/sync_access_df_10-8_1k.RData')
+# Read in data from folder where data is saved from other scripts
+# load('Data/10k_5_20/access_df_10-8_1k.RData')
+# load('Data/10k_5_20/sync_df_10-8_1k.RData')
+# load('Data/10k_5_20/sync_access_df_10-8_1k.RData')
+load("Data/access_df_10-8_1k.RData")
+load("Data/sync_df_10-8_1k.RData")
+load("Data/sync_access_df_10-8_1k.RData")
 
 fleet_distn <- list()
 fleet_distn$"easy access" <- c(25,25,25,109,109,109)
 fleet_distn$"medium access" <- rep(67,6)
 fleet_distn$"hard access" <- c(109,109,109,25,25,25)
-nsims <- 50
+nsims <- 2  # SET NUMBER OF SIMS HERE
 
 fifty.sims <- list()
 for(ii in 1:3) {
@@ -337,7 +342,7 @@ dev.off()
 
 # groundfish biomass check ------------------------------------------------
 for(ii in 1:3)
-  names(fifty.sims[[ii]]) <- 1:50
+  names(fifty.sims[[ii]]) <- 1:nsims  
 
 to.save <- map_dfr(fifty.sims, function(scenario) map_dfr(scenario, ~.x$groundfish_bio[,1]), 
                    .id = 'scenario') %>%
@@ -390,10 +395,10 @@ to.save <- catch.df %>%
   #       strip.background = element_rect(fill="white")) +
   xlab('Week of year') +
   ylab('Catch (numbers)') +
-  scale_color_manual(values = LaCroixColoR::lacroix_palette('PeachPear')[c(1,2,4,5,6)]) +
+  # scale_color_manual(values = LaCroixColoR::lacroix_palette('PeachPear')[c(1,2,4,5,6)]) +
   #scale_colour_manual(values = beyonce::beyonce_palette(127)[-1]) +
   #ghibli::scale_color_ghibli_d(name = 'YesterdayMedium', direction = 1) +
-  #scale_color_manual(values = wesanderson::wes_palette('FantasticFox1')) +
+  scale_color_manual(values = wesanderson::wes_palette('FantasticFox1')) +
   NULL
 
 ggsave('Figures/pub_figs/catch_dynamics.png', height = 6, width = 7, units = 'in', dpi = 500)
