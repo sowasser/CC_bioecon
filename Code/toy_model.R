@@ -34,8 +34,8 @@ pop_seasons <- list(matrix(1, nrow = npops, ncol = wks_per_yr, dimnames = list(s
 # Assume yr starts Dec. 1
 pop_seasons[[1]]['crab', 37] <- 1
 # pop_seasons[[1]]['crab', 37] <- 0.7
-pop_seasons[[1]]['crab', 38:wks_per_yr] <- 0
-# pop_seasons[[1]]['crab', 1:4] <- 0 # HAB closure
+pop_seasons[[1]]['crab', 38:wks_per_yr] <- 0 
+pop_seasons[[1]]['crab', 1:4] <- 0 # HAB closure
 
 # salmon (spp. 2) season = May 1 - Oct. 31 (actually more complicated)
 pop_seasons[[1]]['salmon', 1:21] <- 0
