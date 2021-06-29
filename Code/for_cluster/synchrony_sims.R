@@ -9,7 +9,7 @@ source('Code/toy_model.R')
 
 # args <- commandArgs(TRUE)
 # nsims <- args[1]
-nsims <- 1  # set number of simulations here
+nsims <- 50  # set number of simulations here
 
 res.list <- list()
 corr.par <- c(0.5, 0, -0.5)

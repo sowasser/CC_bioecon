@@ -10,7 +10,7 @@ source('Code/toy_model.R')
 
 # args <- commandArgs(TRUE)
 # nsims <- args[1]
-nsims <- 1  # set number of simulations here
+nsims <- 50  # set number of simulations here
 
 fleet_distn <- list()
 fleet_distn$"easy access" <- c(25,25,25,109,109,109)

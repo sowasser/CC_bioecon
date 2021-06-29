@@ -10,7 +10,7 @@ source('Code/toy_model.R')
 
 # args <- commandArgs(TRUE)
 # nsims <- args[1]
-nsims <- 1  # set number of simulations here
+nsims <- 50  # set number of simulations here
 
 sim_pars$recruit_corr <- 0
 sim_pars$ind_pops <- 0
@@ -35,4 +35,3 @@ print('sims done')
 access_tibbles <- summarize_sim_results(access, 'access')
 save(access, file = 'Data/access_10-8_1k.RData')
 save(access_tibbles, file = 'Data/access_df_10-8_1k.RData')
-

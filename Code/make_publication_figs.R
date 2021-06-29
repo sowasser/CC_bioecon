@@ -21,7 +21,7 @@ fleet_distn <- list()
 fleet_distn$"easy access" <- c(25,25,25,109,109,109)
 fleet_distn$"medium access" <- rep(67,6)
 fleet_distn$"hard access" <- c(109,109,109,25,25,25)
-nsims <- 2  # SET NUMBER OF SIMS HERE
+nsims <- 50  # SET NUMBER OF SIMS HERE
 
 fifty.sims <- list()
 for(ii in 1:3) {
